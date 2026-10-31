@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cabine.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="store.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
         integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -35,8 +36,8 @@
                 <label for="search" class="font-bold">search trajet</label>
                 <input type="search" id="search" class="border-2 border-black rounded-xl border px-3 py-1">
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-1 lg:grid-cols-3 gap4">
-                <button>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-1 lg:grid-cols-3 gap4" id="classic">
+                <!-- <button>
                     <div class="border-2 border-black rounded-xl h-40 bg-white p-2">
                         <img src="img/icontarjet-removebg-preview.png" alt="trajet" class="w-[50px]">
                         <div>
@@ -89,8 +90,16 @@
                             <span>time la fin</span>
                         </div>
                     </div>
-                </button>
+                </button> -->
 
+            </div>
+            <div class="">
+                 <span class="magination1">+</span>
+                 <span>1</span>
+                 <span>2</span>
+                 <span>3</span>
+                 <span>-</span>
+                 
             </div>
     </main>
     <footer class="bg-neutral-primary-soft rounded-base shadow-xs border border-default m-4">
