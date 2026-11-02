@@ -30,13 +30,13 @@
 
     </header>
     <main>
-        <div class="max-w-7x1 mx-aoto px-4">
+        <span class="max-w-7x1 mx-aoto px-4">
             <div class="mb-4">
                 <label for="search" class="font-bold">search trajet</label>
                 <input type="search" id="search" class="border-2 border-black rounded-xl border px-3 py-1">
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-1 lg:grid-cols-3 gap4">
-                <button>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-1 lg:grid-cols-3 gap4" id="classic">
+                <!-- <button>
                     <div class="border-2 border-black rounded-xl h-40 bg-white p-2">
                         <img src="img/icontarjet-removebg-preview.png" alt="trajet" class="w-[50px]">
                         <div>
@@ -89,7 +89,25 @@
                             <span>time la fin</span>
                         </div>
                     </div>
-                </button>
+                </button> -->
+
+            </div>
+            <div class="flex justify-center gap-2">
+                <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="click" id="plus">
+                 <span >+</span>
+                 </button>
+                 <button class="border-2 border-black rounded-xl bg-white w-[30px] " type="click" id="one">
+                 <span >1</span>
+                 </button>
+                 <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="click" id="two">
+                 <span>2</span>
+                 </button>
+                 <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="click" id="three">
+                 <span >3</span>
+                 </button>
+                 <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="click" id="moin">
+                 <span>-</span>
+                 </button>
 
             </div>
     </main>
