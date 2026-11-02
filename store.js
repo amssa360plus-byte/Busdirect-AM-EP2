@@ -7,13 +7,15 @@ fetch('data/trips.json')
     const one = document.querySelector('#one');
     const two = document.querySelector('#two')
     const three = document.querySelector('#three')
+    const four = document.querySelector('#four')
 
     function displayTrips(out) {
         let output = '';
 
         for (let city of out) {
             output += `
-                <button type="button"
+            <div class="relative left-[250px] top-[20px]">
+                <a href="cabine.html""
                     class="w-full text-left rounded-xl transition duration-300 hover:-translate-y-1">
 
                     <div class="w-full min-h-[180px] border-4 border-gray-300 rounded-xl
@@ -42,7 +44,8 @@ fetch('data/trips.json')
                             </div>
                         </div>
                     </div>
-                </button>
+                </a>
+                </div>
             `;
         }
 
@@ -67,5 +70,44 @@ fetch('data/trips.json')
         e.preventDefault();
         displayTrips(trips.slice(12, 18))
     })
+    four.addEventListener('click', function(e){
+        e.preventDefault
+        displayTrips(trips.slice(18, 20))
+    })
+        const searche = document.querySelector('#searche');
+
+    searche.addEventListener('input', function () {
+        const mot = searche.value.trim().toLowerCase();
+
+        const resulta = trips.filter(function (trip) {
+            return trip.departure.toLowerCase().includes(mot)
+                || trip.destination.toLowerCase().includes(mot);
+        });
+
+        displayTrips(resulta.slice(0, 6));
+    });
+       
+      const filtre = document.querySelector('#filter');
+
+    filtre.addEventListener('change', function () {
+        const choix = filtre.value;
+
+        if (choix === 'tous') {
+            displayTrips(trips.slice(0, 6));
+        }
+        else if (choix === 'dispo') {
+            const dispos = trips.filter(function (trip) {
+                return trip.reservations.length < trip.capacity;
+            });
+            displayTrips(dispos.slice(0, 6))
+
+        }
+        else if (choix === 'com') {
+            const complets = trips.filter(function (trip) {
+                return trip.reservations.length >= trip.capacity;
+            });
+            displayTrips(complets.slice(0, 6));
+        }
+    });
+})
     
-});
