@@ -7,15 +7,21 @@ fetch('data/trips.json')
     const one = document.querySelector('#one');
     const two = document.querySelector('#two')
     const three = document.querySelector('#three')
+ feature/data-store
     const four = document.querySelector('#four')
+
+ dev
 
     function displayTrips(out) {
         let output = '';
 
         for (let city of out) {
             output += `
+ feature/data-store
             <div class="relative left-[250px] top-[20px]">
                 <a href="cabine.html""
+                <button type="button"
+ dev
                     class="w-full text-left rounded-xl transition duration-300 hover:-translate-y-1">
 
                     <div class="w-full min-h-[180px] border-4 border-gray-300 rounded-xl
@@ -44,8 +50,12 @@ fetch('data/trips.json')
                             </div>
                         </div>
                     </div>
+] feature/data-store
                 </a>
                 </div>
+
+                </button>
+ dev
             `;
         }
 
@@ -70,6 +80,7 @@ fetch('data/trips.json')
         e.preventDefault();
         displayTrips(trips.slice(12, 18))
     })
+ feature/data-store
     four.addEventListener('click', function(e){
         e.preventDefault
         displayTrips(trips.slice(18, 20))
@@ -111,3 +122,6 @@ fetch('data/trips.json')
     });
 })
     
+    
+});
+ dev
