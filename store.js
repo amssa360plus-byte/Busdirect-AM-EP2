@@ -14,7 +14,7 @@ fetch('data/trips.json')
 
         for (let city of out) {
             output += `
-            <div class="relative left-[250px] top-[20px]">
+            <div class="relative left-[100px] top-[20px]">
                 <a href="cabine.html""
                     class="w-full text-left rounded-xl transition duration-300 hover:-translate-y-1">
 
