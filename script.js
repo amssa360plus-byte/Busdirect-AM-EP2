@@ -10,6 +10,8 @@ const reserveNameInput = document.querySelector('#reserve-name');
 const reserveSeatSelect = document.querySelector('#reserve-seat');
 const reserveNotification = document.querySelector('#reserve-notification');
 const ticketPreview = document.querySelector('#ticket-preview');
+const reserveSeatSelectvip = document.querySelector('#reserve-seatvip');
+
 
 const NameRev01 = document.querySelector('#namerev01');
 const NameRev02 = document.querySelector('#namerev02');
@@ -125,29 +127,29 @@ if (selectedSeat === '') {
         </div>
     `;
 
-    if (reserveSeatSelect.value === "1") {
-        resvplace01.style.backgroundColor = "red";
+    if (reserveSeatSelectvip.value === "1") {
+        resvplace01.style.backgroundColor = "yellow";
         lib01.remove();
         NameRev01.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="1">${passengerName} (Seat 1)</option>`;
         resirvation.push(price)
     }    
-    if (reserveSeatSelect.value === "2") {
-        resvplace02.style.backgroundColor = "red";
+    if (reserveSeatSelectvip.value === "2") {
+        resvplace02.style.backgroundColor = "yellow";
         lib02.remove();
         NameRev02.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="2">${passengerName} (Seat 2)</option>`;
         resirvation.push(price)
     }   
-    if (reserveSeatSelect.value === "3") {
-        resvplace03.style.backgroundColor = "red";
+    if (reserveSeatSelectvip.value === "3") {
+        resvplace03.style.backgroundColor = "yellow";
         lib03.remove();
         NameRev03.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="3">${passengerName} (Seat 3)</option>`;
         resirvation.push(price)
     }
-    if (reserveSeatSelect.value === "4") {
-        resvplace04.style.backgroundColor = "red";
+    if (reserveSeatSelectvip.value === "4") {
+        resvplace04.style.backgroundColor = "yellow";
         lib04.remove();
         NameRev04.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="4">${passengerName} (Seat 4)</option>`;

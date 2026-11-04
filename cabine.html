@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
         integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
+        <script src="main-cabine.js"></script>
 </head>
 
 <body class=""> 
@@ -38,7 +39,8 @@
             </div>
             <div class="allhead"></div>
             <div class="border-2 border-solid" id="headr3">
-                <p id="price">80 DH / Place</p>
+                <span id="price">80</span><span>DH</span>
+                <span>/ Place</span>
             </div>
             
 
@@ -84,7 +86,7 @@
                     </button>
 
                     <!-- Place 02 -->
-                    <button type="button" data-seat="2" id="place02" class="seat-btn">
+                    <button type="button" data-seat="2" id="plac    `                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       e02" class="seat-btn">
                         <span class="seat-num">02</span>
                         <span class="seat-libre" id="libre02">Libre</span>
                         <span id="namerev02"></span>
@@ -232,15 +234,18 @@
                         <input id="reserve-name" name="reserve-name" type="text" autocapitalize="none"
                             enterkeyhint="done" autocomplete="off" maxlength="60" placeholder="EXAMPLE MAX VERSTAPPEND"
                             class="mb-3 w-full rounded-lg border border-slate-300 bg-white px-1 py-2 text-sm placeholder:text-slate-400" />
+                        <label for="reserve-seat" class="mb-1 block text-sm font-semibold text-slate-700">
+                        </label>
+                        <label for="Number" class="mb-1 block text-sm font-semibold text-slate-700">Passager
+                            Number</label>
+                        <input id="Number" name="reserve-name" type="text" autocapitalize="none"
+                            enterkeyhint="done" autocomplete="off" maxlength="60" placeholder="entre le nombre telephone svp"
+                            class="mb-3 w-full rounded-lg border border-slate-300 bg-white px-1 py-2 text-sm placeholder:text-slate-400" />
                         <label for="reserve-seat" class="mb-1 block text-sm font-semibold text-slate-700">siege
                         </label>
                         <select id="reserve-seat" name="reserve-seat"
                             class="mb-3 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-9 text-sm">
                             <option value="">Choix</option>
-                            <option value="1">Seat 1</option>
-                            <option value="2">Seat 2</option>
-                            <option value="3">Seat 3</option>
-                            <option value="4">Seat 4</option>
                             <option value="5">Seat 5</option>
                             <option value="6">Seat 6</option>
                             <option value="7">Seat 7</option>
@@ -257,6 +262,14 @@
                             <option value="18">Seat 18</option>
                             <option value="19">Seat 19</option>
                             <option value="20">Seat 20</option>
+                        </select>
+                        <select id="reserve-seatvip" name="reserve-seat"
+                            class="mb-3 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-9 text-sm">
+                            <option value="">Choix VIP</option>
+                            <option value="1">Seat 1</option>
+                            <option value="2">Seat 2</option>
+                            <option value="3">Seat 3</option>
+                            <option value="4">Seat 4</option>
                         </select>
                         <button type="submit" id="reserve-submit"
                             class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gray-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-600 active:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-50">
