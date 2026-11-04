@@ -8,7 +8,7 @@ fetch('data/trips.json')
 .then(function(trips) {
 
     const trajet = trips.find(function(trip) {
-        return Number(trip.id) === id;
+        return Number(trip.id)===id;
     });
 
     console.log(trajet);
