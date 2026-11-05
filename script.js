@@ -4,6 +4,7 @@ let price = 80;
 let final = 0
 let place  = 0
 let ouccepon = 0
+let numbertele = []
 
 const reserveForm = document.querySelector('#reserve-form');
 const reserveNameInput = document.querySelector('#reserve-name');
@@ -11,6 +12,7 @@ const reserveSeatSelect = document.querySelector('#reserve-seat');
 const reserveNotification = document.querySelector('#reserve-notification');
 const ticketPreview = document.querySelector('#ticket-preview');
 const reserveSeatSelectvip = document.querySelector('#reserve-seatvip');
+const number2 = document.querySelector("#Number")
 
 
 const NameRev01 = document.querySelector('#namerev01');
@@ -77,7 +79,7 @@ const lib19 = document.querySelector('#libre19');
 const lib20 = document.querySelector('#libre20');
 
 const mo_modifie = document.querySelector('#modify-passenger');
-
+let telephone
 reserveForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     const passengerName = reserveNameInput.value.trim();
@@ -122,6 +124,7 @@ if (selectedSeat === '') {
         <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm space-y-1">
             <p class="font-bold text-slate-900">resirvation succes</p>
             <p class="text-slate-700"><strong>Passagere:</strong> ${passengerName}</p>
+             <p class="text-slate-700"><strong>siege:</strong> Seat ${number2.value}</p>
             <p class="text-slate-700"><strong>siege:</strong> Seat ${selectedSeat}</p>
             <p class="text-teal-600 font-semibold pt-1">prix: 80 DH</p>
         </div>
@@ -131,6 +134,7 @@ if (selectedSeat === '') {
         resvplace01.style.backgroundColor = "yellow";
         lib01.remove();
         NameRev01.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev01.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="1">${passengerName} (Seat 1)</option>`;
         resirvation.push(price)
     }    
@@ -138,50 +142,64 @@ if (selectedSeat === '') {
         resvplace02.style.backgroundColor = "yellow";
         lib02.remove();
         NameRev02.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev02.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="2">${passengerName} (Seat 2)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }   
     if (reserveSeatSelectvip.value === "3") {
         resvplace03.style.backgroundColor = "yellow";
         lib03.remove();
         NameRev03.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev03.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="3">${passengerName} (Seat 3)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelectvip.value === "4") {
         resvplace04.style.backgroundColor = "yellow";
         lib04.remove();
         NameRev04.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev04.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="4">${passengerName} (Seat 4)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }    
     if (reserveSeatSelect.value === "5") {
         resvplace05.style.backgroundColor = "red";
         lib05.remove();
         NameRev05.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev05.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="5">${passengerName} (Seat 5)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }  
     if (reserveSeatSelect.value === "6") {
         resvplace06.style.backgroundColor = "red";
+        NameRev06.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         lib06.remove();
         NameRev06.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="6">${passengerName} (Seat 6)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "7") {
         resvplace07.style.backgroundColor = "red";
         lib07.remove();
         NameRev07.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev07.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="7">${passengerName} (Seat 7)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }    
     if (reserveSeatSelect.value === "8") {
         resvplace08.style.backgroundColor = "red";
         lib08.remove();
         NameRev08.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev08.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="8">${passengerName} (Seat 8)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }   
     if (reserveSeatSelect.value === "9") {
         resvplace09.style.backgroundColor = "red";
@@ -189,67 +207,87 @@ if (selectedSeat === '') {
         NameRev09.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="9">${passengerName} (Seat 9)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "10") {
         resvplace10.style.backgroundColor = "red";
         lib10.remove();
         NameRev10.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev10.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="10">${passengerName} (Seat 10)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "11") {
         resvplace11.style.backgroundColor = "red";
         lib11.remove();
         NameRev11.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev11.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="11">${passengerName} (Seat 11)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "12") {
         resvplace12.style.backgroundColor = "red";
         lib12.remove();
         NameRev12.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+        NameRev12.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="12">${passengerName} (Seat 12)</option>`;
+        resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "13") {
         resvplace13.style.backgroundColor = "red";
         lib13.remove();
+        NameRev13.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         NameRev13.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "14") {
         resvplace14.style.backgroundColor = "red";
+        NameRev14.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         lib14.remove();
         NameRev14.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="14">${passengerName} (Seat 14)</option>`;
         resirvation.push(price)
+        number.push(number2)
     } 
     if (reserveSeatSelect.value === "15") {
         resvplace15.style.backgroundColor = "red";
         lib15.remove();
+        NameRev15.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         NameRev15.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="15">${passengerName} (Seat 15)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "16") {
+        NameRev16.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         resvplace16.style.backgroundColor = "red";
         lib16.remove();
         NameRev16.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="16">${passengerName} (Seat 16)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "17") {
         resvplace17.style.backgroundColor = "red";
         lib17.remove();
         NameRev17.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+         NameRev16.innerHTML =  `<div class="nombre telephone"><p class="text-slate-700">${number2.value}</p></div>`
         mo_modifie.innerHTML += `<option value="17">${passengerName} (Seat 17)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "18") {
         resvplace18.style.backgroundColor = "red";
         lib18.remove();
         NameRev18.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
+
         mo_modifie.innerHTML += `<option value="18">${passengerName} (Seat 18)</option>`;
         resirvation.push(price)
+        number.push(number2)
     
     }
     if (reserveSeatSelect.value === "19") {
@@ -258,6 +296,7 @@ if (selectedSeat === '') {
         NameRev19.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="19">${passengerName} (Seat 19)</option>`;
         resirvation.push(price)
+        number.push(number2)
     }
     if (reserveSeatSelect.value === "20") {
         resvplace20.style.backgroundColor = "red";
@@ -265,7 +304,7 @@ if (selectedSeat === '') {
         NameRev20.innerHTML = `<div class=""><p class="text-slate-700">${passengerName}</p></div>`;
         mo_modifie.innerHTML += `<option value="20">${passengerName} (Seat 20)</option>`;
         resirvation.push(price)
-        
+        number.push(number2)
     }
 
 
