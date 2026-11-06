@@ -125,12 +125,16 @@ document.addEventListener("DOMContentLoaded", async function () {
             waitNotification: document.querySelector("#waiting-notification"),
             waitingContainer: document.querySelector("#waiting-list")
         };
-        if (Object.values(el).some(function (element) { return !element; })) {
+        if (Object.values(el).some(function (element) {
+            return !element;
+        })) {
             throw new Error("Un élément HTML est manquant");
         }
         function getSeat(number) {
             const id = String(number).padStart(2, "0");
-            return el.grid.querySelector('[data-seat="' + number + '"]') || document.querySelector("#place" + id);
+            return el.grid.querySelector(
+                '[data-seat="' + number + '"]'
+            ) || document.querySelector("#place" + id);
         }
         function displaySeats() {
             for (let i = 1; i <= capacity; i++) {
@@ -141,8 +145,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 seat.dataset.seat = i;
                 const reservation = reservations[i];
                 const status = seat.querySelector(".seat-libre");
-                const name = document.querySelector("#namerev" + id);
-                let phone = document.querySelector("#palceNumiro" + id);
+                const name = document.querySelector(
+                    "#namerev" + id
+                );
+                let phone = document.querySelector(
+                    "#palceNumiro" + id
+                );
                 if (!phone) {
                     phone = document.createElement("span");
                     phone.id = "palceNumiro" + id;
@@ -150,15 +158,25 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
                 if (reservation) {
                     seat.disabled = true;
-                    seat.style.backgroundColor = i <= 4 ? "yellow" : "red";
-                    if (status) { status.textContent = "Occupé"; }
-                    if (name) { name.textContent = reservation.name; }
-                    phone.textContent = reservation.phone || "";
+                    seat.style.backgroundColor =
+                        i <= 4 ? "yellow" : "red";
+                    if (status) {
+                        status.textContent = "Occupé";
+                    }
+                    if (name) {
+                        name.textContent = reservation.name;
+                    }
+                    phone.textContent =
+                        reservation.phone || "";
                 } else {
                     seat.disabled = false;
                     seat.style.backgroundColor = "#dcfce7";
-                    if (status) { status.textContent = "Libre"; }
-                    if (name) { name.textContent = ""; }
+                    if (status) {
+                        status.textContent = "Libre";
+                    }
+                    if (name) {
+                        name.textContent = "";
+                    }
                     phone.textContent = "";
                 }
             }
@@ -167,9 +185,13 @@ document.addEventListener("DOMContentLoaded", async function () {
             select.innerHTML = "";
             select.add(new Option(placeholder, ""));
             items.forEach(function (item) {
-                select.add(new Option(item.label, item.value));
+                select.add(
+                    new Option(item.label, item.value)
+                );
             });
-            if (selected) { select.value = String(selected); }
+            if (selected) {
+                select.value = String(selected);
+            }
         }
         function updateSelects() {
             const oldModify = el.modifyPassenger.value;
@@ -181,46 +203,90 @@ document.addEventListener("DOMContentLoaded", async function () {
             const available = [];
             for (let i = 1; i <= capacity; i++) {
                 const person = reservations[i];
-                const item = { value: i, label: "Seat " + i };
+                const item = {
+                    value: i,
+                    label: "Seat " + i
+                };
                 if (person) {
-                    booked.push({ value: i, label: person.name + " (Seat " + i + ")" });
+                    booked.push({
+                        value: i,
+                        label: person.name + " (Seat " + i + ")"
+                    });
                 } else {
                     available.push(item);
-                    if (i <= 4) { vip.push(item); } else { normal.push(item); }
+                    if (i <= 4) {
+                        vip.push(item);
+                    } else {
+                        normal.push(item);
+                    }
                 }
             }
             const selectedModify = Number(oldModify);
             if (selectedModify && reservations[selectedModify]) {
-                available.push({ value: selectedModify, label: "Seat " + selectedModify + " (actuel)" });
+                available.push({
+                    value: selectedModify,
+                    label: "Seat " + selectedModify + " (actuel)"
+                });
             }
-            fillSelect(el.reserveSeat, "Choix", normal, el.reserveSeat.value);
-            fillSelect(el.reserveVIP, "Choix VIP", vip, el.reserveVIP.value);
-            fillSelect(el.modifyPassenger, "Sélectionner passager", booked, oldModify);
-            fillSelect(el.modifySeat, "Garder le siège actuel", available, oldTarget);
-            fillSelect(el.cancelPassenger, "Sélectionner réservation", booked, oldCancel);
+            fillSelect(
+                el.reserveSeat,
+                "Choix",
+                normal,
+                el.reserveSeat.value
+            );
+            fillSelect(
+                el.reserveVIP,
+                "Choix VIP",
+                vip,
+                el.reserveVIP.value
+            );
+            fillSelect(
+                el.modifyPassenger,
+                "Sélectionner passager",
+                booked,
+                oldModify
+            );
+            fillSelect(
+                el.modifySeat,
+                "Garder le siège actuel",
+                available,
+                oldTarget
+            );
+            fillSelect(
+                el.cancelPassenger,
+                "Sélectionner réservation",
+                booked,
+                oldCancel
+            );
         }
         function updateStats() {
             const occupied = Object.keys(reservations).length;
             const total = occupied * price;
-            document.querySelector("#oucupe").textContent = occupied;
-            document.querySelector(".total-form").textContent = total + " DH";
+            document.querySelector("#oucupe").textContent =
+                occupied;
+            document.querySelector(".total-form").textContent =
+                total + " DH";
         }
         function displayWaitingList() {
             el.waitingContainer.innerHTML = "";
             if (waitingList.length === 0) {
-                el.waitingContainer.textContent = "Aucune personne en attente";
+                el.waitingContainer.textContent =
+                    "Aucune personne en attente";
                 return;
             }
             waitingList.forEach(function (person, index) {
                 const card = document.createElement("div");
-                card.className = "border rounded-xl p-3 mb-2 flex justify-between items-center gap-3";
+                card.className =
+                    "border rounded-xl p-3 mb-2 flex justify-between items-center gap-3";
                 const info = document.createElement("span");
-                info.textContent = person.name + " - " + person.phone;
+                info.textContent =
+                    person.name + " - " + person.phone;
                 const button = document.createElement("button");
                 button.type = "button";
                 button.textContent = "Remove";
                 button.dataset.removeWait = index;
-                button.className = "border border-red-300 rounded-lg px-3 py-2 text-red-600";
+                button.className =
+                    "border border-red-300 rounded-lg px-3 py-2 text-red-600";
                 card.append(info, button);
                 el.waitingContainer.appendChild(card);
             });
@@ -246,10 +312,207 @@ document.addEventListener("DOMContentLoaded", async function () {
         el.modifyPassenger.addEventListener("change", function () {
             const seat = Number(el.modifyPassenger.value);
             const person = reservations[seat];
-            el.modifyName.value = person ? person.name : "";
+            el.modifyName.value = person
+                ? person.name
+                : "";
             el.modifySeat.value = "";
         });
+        function handleSubmit(form) {
+            if (form === el.reserveForm) {
+                const name = el.reserveName.value.trim();
+                const phone = el.reservePhone.value.trim();
+                const seat = Number(
+                    el.reserveVIP.value || el.reserveSeat.value
+                );
+                if (!name || !phone) {
+                    el.reserveNotification.textContent =
+                        "Veuillez saisir le nom et le téléphone.";
+                    return;
+                }
+                if (!seat || seat > capacity || seat < 1) {
+                    el.reserveNotification.textContent =
+                        "Veuillez choisir un siège.";
+                    return;
+                }
+                if (reservations[seat]) {
+                    el.reserveNotification.textContent =
+                        "Ce siège est déjà réservé.";
+                    return;
+                }
+                reservations[seat] = {
+                    seat: seat,
+                    name: name,
+                    phone: phone
+                };
+                if (!saveReservations()) {
+                    delete reservations[seat];
+                    el.reserveNotification.textContent =
+                        "Erreur de sauvegarde.";
+                    refresh();
+                    return;
+                }
+                el.ticket.textContent =
+                    "Réservation réussie ! " +
+                    name + " | Seat " + seat +
+                    " | Prix : " + price + " DH";
+                el.ticket.classList.remove("hidden");
+                el.reserveNotification.textContent = "";
+                el.reserveForm.reset();
+                refresh();
+                return;
+            }
+            if (form === el.modifyForm) {
+                const oldSeat = Number(el.modifyPassenger.value);
+                const newName = el.modifyName.value.trim();
+                const selectedSeat = Number(el.modifySeat.value);
+                if (!oldSeat || !reservations[oldSeat]) {
+                    el.modifyNotification.textContent =
+                        "Veuillez sélectionner un passager.";
+                    return;
+                }
+                if (!newName) {
+                    el.modifyNotification.textContent =
+                        "Veuillez saisir le nouveau nom.";
+                    return;
+                }
+                const newSeat = selectedSeat || oldSeat;
+                if (
+                    newSeat !== oldSeat &&
+                    reservations[newSeat]
+                ) {
+                    el.modifyNotification.textContent =
+                        "Ce siège est déjà occupé.";
+                    return;
+                }
+                const oldReservation = reservations[oldSeat];
+                delete reservations[oldSeat];
+                reservations[newSeat] = {
+                    seat: newSeat,
+                    name: newName,
+                    phone: oldReservation.phone
+                };
+                if (!saveReservations()) {
+                    delete reservations[newSeat];
+                    reservations[oldSeat] = oldReservation;
+                    el.modifyNotification.textContent =
+                        "Erreur de sauvegarde.";
+                    refresh();
+                    return;
+                }
+                el.modifyNotification.textContent =
+                    "Modification réussie.";
+                el.modifyForm.reset();
+                refresh();
+                return;
+            }
+            if (form === el.cancelForm) {
+                const seat = Number(el.cancelPassenger.value);
+                if (!seat || !reservations[seat]) {
+                    el.cancelNotification.textContent =
+                        "Veuillez sélectionner une réservation.";
+                    return;
+                }
+                const oldReservation = reservations[seat];
+                const oldWaiting = waitingList.slice();
+                delete reservations[seat];
+                let message =
+                    "Réservation annulée. Le siège est libre.";
+                if (waitingList.length > 0) {
+                    const nextPerson = waitingList.shift();
+                    reservations[seat] = {
+                        seat: seat,
+                        name: nextPerson.name,
+                        phone: nextPerson.phone || ""
+                    };
+                    message =
+                        nextPerson.name +
+                        " a pris le siège " + seat;
+                }
+                const saved1 = saveReservations();
+                const saved2 = saveWaitingList();
+                if (!saved1 || !saved2) {
+                    reservations[seat] = oldReservation;
+                    waitingList.splice(
+                        0,
+                        waitingList.length,
+                        ...oldWaiting
+                    );
+                    saveReservations();
+                    saveWaitingList();
+                    el.cancelNotification.textContent =
+                        "Erreur de sauvegarde.";
+                    refresh();
+                    return;
+                }
+                el.cancelNotification.textContent = message;
+                el.cancelForm.reset();
+                refresh();
+                return;
+            }
+            if (form === el.waitForm) {
+                const name = el.waitName.value.trim();
+                const phone = el.waitPhone.value.trim();
+                if (!name || !phone) {
+                    el.waitNotification.textContent =
+                        "Veuillez saisir le nom et le téléphone.";
+                    return;
+                }
+                waitingList.push({
+                    name: name,
+                    phone: phone
+                });
+                if (!saveWaitingList()) {
+                    waitingList.pop();
+                    el.waitNotification.textContent =
+                        "Erreur de sauvegarde.";
+                    return;
+                }
+                el.waitNotification.textContent =
+                    "Passager ajouté à Waiting List.";
+                el.waitForm.reset();
+                displayWaitingList();
+            }
+        }
+        el.waitingContainer.addEventListener("click", function (event) {
+            const button = event.target.closest("[data-remove-wait]");
+            if (!button) return;
+            const index = Number(button.dataset.removeWait);
+            if (
+                !Number.isInteger(index) ||
+                index < 0 ||
+                index >= waitingList.length
+            ) {
+                return;
+            }
+            const removed = waitingList.splice(index, 1)[0];
+            if (!saveWaitingList()) {
+                waitingList.splice(index, 0, removed);
+                el.waitNotification.textContent =
+                    "Erreur de sauvegarde.";
+                return;
+            }
+            el.waitNotification.textContent =
+                "Passager supprimé.";
+            displayWaitingList();
+        });
+        busApp = {
+            handleSubmit: handleSubmit,
+            refresh: refresh,
+            reservations: reservations,
+            waitingList: waitingList,
+            saveReservations: saveReservations,
+            saveWaitingList: saveWaitingList,
+            elements: el,
+            trip: trajet,
+            price: price
+        };
+        refresh();
     } catch (error) {
         console.error(error);
+        const notification =
+            document.querySelector("#reserve-notification");
+        if (notification) {
+            notification.textContent = error.message;
+        }
     }
 });
