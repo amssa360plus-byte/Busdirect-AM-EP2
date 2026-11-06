@@ -265,6 +265,31 @@ body{
         top: -27px;
 
     }
+    .seat-btn.vip-occupied {
+    background-color: yellow !important;
+}
+.Place {
+    position: static;
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+#seats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    #seats-grid {
+        gap: 8px;
+    }
+}
     
 
 @media(MAX-width: 767px){

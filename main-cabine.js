@@ -39,6 +39,109 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const reservations = {};
 
+const reservationKey = "seats_trip_" + tripId;
+
+
+function readStorage(key) {
+
+    try {
+
+        const data = localStorage.getItem(key);
+
+        return data === null ? null : JSON.parse(data);
+
+    } catch (error) {
+
+        console.error("Erreur LocalStorage", error);
+
+        return null;
+    }
+}
+
+
+function normalizeReservations(data) {
+
+    const result = {};
+
+    if (Array.isArray(data)) {
+
+        data.forEach(function (person) {
+
+            result[person.seat] = {
+
+                seat: Number(person.seat),
+
+                name: person.name,
+
+                phone: person.phone || ""
+            };
+
+        });
+
+    } else if (data && typeof data === "object") {
+
+        Object.keys(data).forEach(function (seat) {
+
+            const person = data[seat];
+
+            result[seat] = {
+
+                seat: Number(seat),
+
+                name: typeof person === "string"
+                    ? person
+                    : person.name,
+
+                phone: typeof person === "string"
+                    ? ""
+                    : person.phone || ""
+            };
+
+        });
+    }
+
+    return result;
+}
+
+
+const savedReservations = readStorage(reservationKey);
+
+   reservations = normalizeReservations(
+    
+    savedReservations === null
+        ? trajet.reservations
+        : savedReservations
+
+);
+
+
+function saveReservations() {
+
+    try {
+
+        localStorage.setItem(
+            reservationKey,
+            JSON.stringify(reservations)
+        );
+
+        return true;
+
+    } catch (error) {
+
+        console.error("Erreur de sauvegarde", error);
+
+        return false;
+    }
+}
+
+
+if (savedReservations === null) {
+
+    saveReservations();
+
+}
+
+
         trajet.reservations.forEach(function (person) {
 
             reservations[person.seat] = person;
@@ -204,7 +307,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             displaySeats: displaySeats,
 
-            updateStats: updateStats
+            updateStats: updateStats,
+
+            saveReservations: saveReservations,
         };
 
     } catch (error) {
