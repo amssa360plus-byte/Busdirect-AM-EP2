@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUS-DIRECT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cabine.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+        integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body class="">
+    <header>
+        <div class="border-2 border-solid rounded-full h-12 " id="header1">
+            <div class="logo">
+                <img src="img/d38fbea432c4d6212640eceb98e55303-removebg-preview.png" alt="logo bus">
+                <span id="name">MV33</span>
+            </div>
+            <div class="right-header">
+                <span> <a href="cabine.html" id="resirvation">resirvation </a>
+                    <a href="index.html" id="trajet">trajet</a>
+                    <img src="img/d62a4f85930c117939a59084387ff934-removebg-preview.png" alt="user"
+                        id="logouser"></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="p-6">
+        <div class="max-w-7xl mx-auto px-4">
+
+            <div class="mb-6 flex flex-wrap gap-4 items-center justify-between">
+                <div>
+                    <label for="searche" class="font-bold block mb-1">Search Trajet</label>
+                    <input type="search" id="searche" class="border-2 border-black rounded-xl px-3 py-1">
+                </div>
+                <div>
+                    <label for="text" class="font-bold block mb-1">total</label>
+                    <div class="border-2 border-black rounded-xl px-3 py-1 w-[200px] h-[30px] bg-white">
+                        <span id = 'total-span'>total:</span>
+                        <span id="total-money">0</span>
+                    </div>
+                </div>
+                <div>
+                    <label for="Number" class="font-bold block mb-1"></label>
+                </div>
+                <div>
+                    <label for="filter" class="font-bold block mb-1">Filter Trajet</label>
+                    <select id="filter" autocomplete="off"
+                        class="border-2 border-black rounded-xl px-3 py-1 bg-white">
+                        <option value="tous">Tous</option>
+                        <option value="dispo">Disponible</option>
+                        <option value="com">Complet</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="classic">
+                
+            </div>
+
+            <div class="flex justify-center gap-2 mt-8">
+                <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="button" id="one">
+                    <span>1</span>
+                </button>
+                <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="button" id="two">
+                    <span>2</span>
+                </button>
+                <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="button" id="three">
+                    <span>3</span>
+                </button>
+                <button class="border-2 border-black rounded-xl bg-white w-[30px]" type="button" id="four">
+                    <span>4</span>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-neutral-primary-soft rounded-base shadow-xs border border-default m-4">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-body sm:text-center">© 2026 <a class="hover:underline">AM-BUS™</a>. All Rights
+                Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-body sm:mt-0">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">resirvation</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Ticket</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="store.js"></script>
+</body>
+
+</html>
